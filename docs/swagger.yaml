@@ -1,0 +1,443 @@
+basePath: /
+definitions:
+  dto.ExperienceCreateDto:
+    properties:
+      description:
+        type: string
+      order:
+        type: integer
+      period:
+        type: string
+      position:
+        type: string
+      title:
+        type: string
+    required:
+    - description
+    - period
+    - position
+    - title
+    type: object
+  dto.ExperienceUpdateDto:
+    properties:
+      description:
+        type: string
+      order:
+        type: integer
+      period:
+        type: string
+      position:
+        type: string
+      title:
+        type: string
+    required:
+    - description
+    - period
+    - position
+    - title
+    type: object
+  dto.InfoCreateOrUpdateDto:
+    properties:
+      about:
+        type: string
+      email:
+        type: string
+      github:
+        type: string
+      location:
+        type: string
+      position:
+        type: string
+      telegram:
+        type: string
+    required:
+    - about
+    - email
+    - github
+    - location
+    - position
+    - telegram
+    type: object
+  dto.ProjectCreateDto:
+    properties:
+      description:
+        type: string
+      link:
+        type: string
+      order:
+        type: integer
+      title:
+        type: string
+    required:
+    - description
+    - link
+    - title
+    type: object
+  dto.ProjectUpdateDto:
+    properties:
+      description:
+        type: string
+      link:
+        type: string
+      order:
+        type: integer
+      title:
+        type: string
+    required:
+    - description
+    - link
+    - title
+    type: object
+  dto.StackCreateDto:
+    properties:
+      order:
+        type: integer
+      svg:
+        type: string
+      title:
+        type: string
+    required:
+    - svg
+    - title
+    type: object
+  model.Experience:
+    properties:
+      description:
+        type: string
+      id:
+        type: integer
+      order:
+        type: integer
+      period:
+        type: string
+      position:
+        type: string
+      title:
+        type: string
+    type: object
+  model.Info:
+    properties:
+      about:
+        type: string
+      email:
+        type: string
+      github:
+        type: string
+      id:
+        type: integer
+      location:
+        type: string
+      position:
+        type: string
+      telegram:
+        type: string
+    type: object
+  model.Project:
+    properties:
+      description:
+        type: string
+      id:
+        type: integer
+      link:
+        type: string
+      order:
+        type: integer
+      title:
+        type: string
+    type: object
+  model.Stack:
+    properties:
+      id:
+        type: integer
+      order:
+        type: integer
+      svg:
+        type: string
+      title:
+        type: string
+    type: object
+  response.ExperienceCreateResponse:
+    properties:
+      experience:
+        $ref: '#/definitions/model.Experience'
+      status:
+        type: integer
+    type: object
+  response.ExperienceDeleteResponse:
+    properties:
+      experience:
+        $ref: '#/definitions/model.Experience'
+      status:
+        type: integer
+    type: object
+  response.ExperienceUpdateResponse:
+    properties:
+      experience:
+        $ref: '#/definitions/model.Experience'
+      status:
+        type: integer
+    type: object
+  response.InfoCreateOrUpdateResponse:
+    properties:
+      info:
+        $ref: '#/definitions/model.Info'
+      status:
+        type: integer
+    type: object
+  response.ProjectCreateResponse:
+    properties:
+      project:
+        $ref: '#/definitions/model.Project'
+      status:
+        type: integer
+    type: object
+  response.ProjectDeleteResponse:
+    properties:
+      project:
+        $ref: '#/definitions/model.Project'
+      status:
+        type: integer
+    type: object
+  response.ProjectUpdateResponse:
+    properties:
+      project:
+        $ref: '#/definitions/model.Project'
+      status:
+        type: integer
+    type: object
+  response.StackCreateResponse:
+    properties:
+      stack:
+        $ref: '#/definitions/model.Stack'
+      status:
+        type: integer
+    type: object
+  response.StackDeleteResponse:
+    properties:
+      stack:
+        $ref: '#/definitions/model.Stack'
+      status:
+        type: integer
+    type: object
+host: olegtemek.site
+info:
+  contact: {}
+  title: Porfolio-go
+  version: "1.0"
+paths:
+  /experience:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Experience
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ExperienceCreateDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ExperienceCreateResponse'
+      security:
+      - BasicAuth: []
+      summary: create
+      tags:
+      - experience
+  /experience/{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: Experience id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ExperienceDeleteResponse'
+      security:
+      - BasicAuth: []
+      summary: delete
+      tags:
+      - experience
+    patch:
+      consumes:
+      - application/json
+      parameters:
+      - description: Experience
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Experience
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ExperienceUpdateDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ExperienceUpdateResponse'
+      security:
+      - BasicAuth: []
+      summary: update
+      tags:
+      - experience
+  /info:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: info
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/dto.InfoCreateOrUpdateDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.InfoCreateOrUpdateResponse'
+      security:
+      - BasicAuth: []
+      summary: createOrUpdate
+      tags:
+      - info
+  /project:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Project
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ProjectCreateDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ProjectCreateResponse'
+      security:
+      - BasicAuth: []
+      summary: create
+      tags:
+      - project
+  /project/{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: Project id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ProjectDeleteResponse'
+      security:
+      - BasicAuth: []
+      summary: delete
+      tags:
+      - project
+    patch:
+      consumes:
+      - application/json
+      parameters:
+      - description: Project
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Project
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ProjectUpdateDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ProjectUpdateResponse'
+      security:
+      - BasicAuth: []
+      summary: update
+      tags:
+      - project
+  /stack:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: stack body
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/dto.StackCreateDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.StackCreateResponse'
+      security:
+      - BasicAuth: []
+      summary: create
+      tags:
+      - stack
+  /stack/{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: stack
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.StackDeleteResponse'
+      security:
+      - BasicAuth: []
+      summary: create
+      tags:
+      - stack
+securityDefinitions:
+  BasicAuth:
+    type: basic
+swagger: "2.0"

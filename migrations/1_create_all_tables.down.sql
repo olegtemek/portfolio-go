@@ -1,0 +1,4 @@
+DROP TABLE Info;
+DROP TABLE Experience;
+DROP TABLE Project;
+DROP TABLE Stack;

@@ -1,0 +1,77 @@
+version: '3'
+services:
+  nginx_proxy_manager:
+    container_name: nginx_proxy_manager
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "81:81"
+      - "443:443"
+    depends_on:
+      - backend
+      - postgres
+    volumes:
+      - ./.docker/data:/data
+      - ./.docker/letsencrypt:/etc/letsencrypt
+    networks:
+      - portfolio_network
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./.docker/db/:/var/lib/postgresql/data/
+    networks:
+      - portfolio_network
+ 
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    volumes:
+      - ./.docker/pgadmin:/var/lib/pgadmin
+    ports:
+      - "8001:80"
+    networks:
+      - portfolio_network
+    restart: unless-stopped
+    
+  migrate:
+    image: migrate/migrate
+    container_name: migrate
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    volumes:
+        - ./migrations:/migrations
+    command: ["-path", "./migrations", "-database",  "$DATABASE_MIGRATION_URL", "up", "1" ]
+    networks:
+        - portfolio_network
+
+  backend:
+    container_name: backend
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8000:8000"
+    networks:
+      - portfolio_network
+
+networks:
+  portfolio_network:
+    name: portfolio_network

@@ -1,0 +1,695 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Porfolio-go",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "olegtemek.site",
+    "basePath": "/",
+    "paths": {
+        "/experience": {
+            "post": {
+                "security": [
+                    {
+                        "BasicAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "experience"
+                ],
+                "summary": "create",
+                "parameters": [
+                    {
+                        "description": "Experience",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.ExperienceCreateDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.ExperienceCreateResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/experience/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "BasicAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "experience"
+                ],
+                "summary": "delete",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Experience id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.ExperienceDeleteResponse"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "security": [
+                    {
+                        "BasicAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "experience"
+                ],
+                "summary": "update",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Experience",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Experience",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.ExperienceUpdateDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.ExperienceUpdateResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/info": {
+            "post": {
+                "security": [
+                    {
+                        "BasicAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "info"
+                ],
+                "summary": "createOrUpdate",
+                "parameters": [
+                    {
+                        "description": "info",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.InfoCreateOrUpdateDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.InfoCreateOrUpdateResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/project": {
+            "post": {
+                "security": [
+                    {
+                        "BasicAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "project"
+                ],
+                "summary": "create",
+                "parameters": [
+                    {
+                        "description": "Project",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.ProjectCreateDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.ProjectCreateResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "BasicAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "project"
+                ],
+                "summary": "delete",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Project id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.ProjectDeleteResponse"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "security": [
+                    {
+                        "BasicAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "project"
+                ],
+                "summary": "update",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Project",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Project",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.ProjectUpdateDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.ProjectUpdateResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/stack": {
+            "post": {
+                "security": [
+                    {
+                        "BasicAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "stack"
+                ],
+                "summary": "create",
+                "parameters": [
+                    {
+                        "description": "stack body",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.StackCreateDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.StackCreateResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/stack/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "BasicAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "stack"
+                ],
+                "summary": "create",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "stack",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.StackDeleteResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "dto.ExperienceCreateDto": {
+            "type": "object",
+            "required": [
+                "description",
+                "period",
+                "position",
+                "title"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "order": {
+                    "type": "integer"
+                },
+                "period": {
+                    "type": "string"
+                },
+                "position": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.ExperienceUpdateDto": {
+            "type": "object",
+            "required": [
+                "description",
+                "period",
+                "position",
+                "title"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "order": {
+                    "type": "integer"
+                },
+                "period": {
+                    "type": "string"
+                },
+                "position": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.InfoCreateOrUpdateDto": {
+            "type": "object",
+            "required": [
+                "about",
+                "email",
+                "github",
+                "location",
+                "position",
+                "telegram"
+            ],
+            "properties": {
+                "about": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "github": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "position": {
+                    "type": "string"
+                },
+                "telegram": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.ProjectCreateDto": {
+            "type": "object",
+            "required": [
+                "description",
+                "link",
+                "title"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "link": {
+                    "type": "string"
+                },
+                "order": {
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.ProjectUpdateDto": {
+            "type": "object",
+            "required": [
+                "description",
+                "link",
+                "title"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "link": {
+                    "type": "string"
+                },
+                "order": {
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.StackCreateDto": {
+            "type": "object",
+            "required": [
+                "svg",
+                "title"
+            ],
+            "properties": {
+                "order": {
+                    "type": "integer"
+                },
+                "svg": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.Experience": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "order": {
+                    "type": "integer"
+                },
+                "period": {
+                    "type": "string"
+                },
+                "position": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.Info": {
+            "type": "object",
+            "properties": {
+                "about": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "github": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "position": {
+                    "type": "string"
+                },
+                "telegram": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.Project": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "link": {
+                    "type": "string"
+                },
+                "order": {
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.Stack": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "order": {
+                    "type": "integer"
+                },
+                "svg": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "response.ExperienceCreateResponse": {
+            "type": "object",
+            "properties": {
+                "experience": {
+                    "$ref": "#/definitions/model.Experience"
+                },
+                "status": {
+                    "type": "integer"
+                }
+            }
+        },
+        "response.ExperienceDeleteResponse": {
+            "type": "object",
+            "properties": {
+                "experience": {
+                    "$ref": "#/definitions/model.Experience"
+                },
+                "status": {
+                    "type": "integer"
+                }
+            }
+        },
+        "response.ExperienceUpdateResponse": {
+            "type": "object",
+            "properties": {
+                "experience": {
+                    "$ref": "#/definitions/model.Experience"
+                },
+                "status": {
+                    "type": "integer"
+                }
+            }
+        },
+        "response.InfoCreateOrUpdateResponse": {
+            "type": "object",
+            "properties": {
+                "info": {
+                    "$ref": "#/definitions/model.Info"
+                },
+                "status": {
+                    "type": "integer"
+                }
+            }
+        },
+        "response.ProjectCreateResponse": {
+            "type": "object",
+            "properties": {
+                "project": {
+                    "$ref": "#/definitions/model.Project"
+                },
+                "status": {
+                    "type": "integer"
+                }
+            }
+        },
+        "response.ProjectDeleteResponse": {
+            "type": "object",
+            "properties": {
+                "project": {
+                    "$ref": "#/definitions/model.Project"
+                },
+                "status": {
+                    "type": "integer"
+                }
+            }
+        },
+        "response.ProjectUpdateResponse": {
+            "type": "object",
+            "properties": {
+                "project": {
+                    "$ref": "#/definitions/model.Project"
+                },
+                "status": {
+                    "type": "integer"
+                }
+            }
+        },
+        "response.StackCreateResponse": {
+            "type": "object",
+            "properties": {
+                "stack": {
+                    "$ref": "#/definitions/model.Stack"
+                },
+                "status": {
+                    "type": "integer"
+                }
+            }
+        },
+        "response.StackDeleteResponse": {
+            "type": "object",
+            "properties": {
+                "stack": {
+                    "$ref": "#/definitions/model.Stack"
+                },
+                "status": {
+                    "type": "integer"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "BasicAuth": {
+            "type": "basic"
+        }
+    }
+}
