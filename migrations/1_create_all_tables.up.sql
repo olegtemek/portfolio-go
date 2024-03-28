@@ -40,7 +40,7 @@ INSERT INTO Experience("order", "title", "position", "period", "description")
 VALUES
   (1, 'Freelance', 'Full stack', '2021 - now', 'Localy'),
   (2, 'Net Light Lab', 'Full stack', '2021 - 2023', 'Digital Agency'),
-  (3, 'Black Box Studio', 'Backend Developer', '2023 - 2023', 'An app to boost mental health');
+  (3, 'Black Box Studio', 'Backend Developer', '2023 - 2024', 'An app to boost mental health');
 
 
 INSERT INTO Stack("order", "title", "svg")

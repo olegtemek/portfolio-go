@@ -1,8 +1,0 @@
-version: "3"
-
-dotenv: [".env"]
-
-tasks:
-  run:
-    cmds:
-      - go run cmd/portfolio-go/main.go

@@ -14,7 +14,7 @@ type IndexTemplate struct {
 	Info       *model.Info
 	Experience []*model.Experience
 	Project    []*model.Project
-	Stack      []template.HTML
+	Stack      []*model.Stack
 }
 
 func (h *Handler) Index(w http.ResponseWriter, r *http.Request) {
@@ -45,18 +45,11 @@ func (h *Handler) Index(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var stacksValues []template.HTML
-
-	for _, n := range stacks {
-		htmlEncapsulate := template.HTML(n.Svg)
-		stacksValues = append(stacksValues, htmlEncapsulate)
-	}
-
 	data := IndexTemplate{
 		Info:       info,
 		Project:    projects,
 		Experience: experiences,
-		Stack:      stacksValues,
+		Stack:      stacks,
 	}
 
 	if err := tmpl.Execute(w, data); err != nil {

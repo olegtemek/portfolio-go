@@ -152,7 +152,7 @@
 
           {{ range .Stack }}
             <div class="stacks__item">
-              <div>{{ . }}</div>
+              <div stack-id="{{ .Id }}">{{ .Svg }}</div>
             </div>
           {{ end }}
           
@@ -167,7 +167,7 @@
         <div class="experience__wrapper">
           {{ range .Experience }}
             <div class="experience__item">
-              <h3>{{ .Title }}</h3>
+              <h3>{{ .Id }}. {{ .Title }}</h3>
               <p>{{ .Position }}</p>
               <span>{{ .Period }}</span>
               <p>{{ .Description }}</p>
@@ -188,7 +188,7 @@
               href="{{ .Link }}"
               class="project__item"
             >
-              <h3>{{ .Title }}</h3>
+              <h3>{{ .Id }}. {{ .Title }}</h3>
               <p>{{ .Description }}</p>
               <span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
